@@ -1,25 +1,38 @@
 import React from "react";
 import styles from './index.less';
-import {NavLink , Link } from "react-router-dom"
+import { Link } from "react-router-dom"
+import { Web3ReactProvider, useWeb3React } from '@web3-react/core'
+import { Web3Provider } from '@ethersproject/providers'
+import { InjectedConnector } from "@web3-react/injected-connector";
 
 export default () => {
+
+  function getLibrary(provider) {
+    const library = new Web3Provider(provider)
+    library.pollingInterval = 5000
+    return library
+  }
+  const injected = new InjectedConnector({
+    supportedChainIds: [1, 3, 4, 5, 42]
+  })
+
+  const { chainId, account, activate } = useWeb3React();
+  const connect = () => {
+    activate(injected);
+  }
+
   return (
+
     <div className={styles.main}>
-      <div className={styles.text}>
-      i am Home/index.tsx
-      </div>
-      <div  className={styles.text}>
-        {/* 存在历史记录，点击浏览器后退按钮能返回上一个页面 */}
-        <Link to="/Board"> (link) go to Board</Link>
-        <br></br>
-        {/* 点击后浏览器后退按钮后仍停留在Board页面 */}
-        <NavLink to="/Board" replace> (navlink) go to Board</NavLink>
-        <br />
-        <Link to="/Square"> (link) go to Square</Link>
-        <br></br>
-        {/* 点击后返回上一级路由页面，直到‘/’之后第一个的页面 */}
-        <NavLink to="/Square" replace> (navlink) go to Square</NavLink>
-      </div>
+      <Web3ReactProvider getLibrary={getLibrary} >
+        <div className={styles.text}>
+          <Link to="/Board">let's go to play！</Link>
+          <p>ChainId: {chainId} </p>
+          <p>Account: {account} </p>
+          <button type="button" onClick={connect}>Connect</button>
+        </div>
+      </Web3ReactProvider>
     </div>
+
   );
 }
