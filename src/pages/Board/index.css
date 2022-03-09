@@ -1,0 +1,22 @@
+.boardRow:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.boardRow {
+  margin: 0 auto;
+}
+.pinkBack {
+  margin: 0 auto;
+  height: auto;
+  background: pink;
+}
+.kuan {
+  width: 200px;
+}
+.status {
+  margin-bottom: 10px;
+}
+.blueBack {
+  background: skyblue;
+}
