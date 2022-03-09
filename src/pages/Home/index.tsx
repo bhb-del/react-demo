@@ -27,10 +27,10 @@ export default () => {
       <Web3ReactProvider getLibrary={getLibrary} >
         <div className={styles.text}>
           <Link to="/Board">let's go to play！</Link>
-          <p>ChainId: {chainId} </p>
-          <p>Account: {account} </p>
-          <button type="button" onClick={connect}>Connect</button>
         </div>
+        <p>ChainId: {chainId}</p>
+        <p>Account: {account}</p>
+        <button type="button" onClick={connect}>Connect</button>
       </Web3ReactProvider>
     </div>
 
