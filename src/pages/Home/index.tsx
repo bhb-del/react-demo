@@ -22,17 +22,15 @@ export default () => {
   }
 
   return (
-
     <div className={styles.main}>
-      <Web3ReactProvider getLibrary={getLibrary} >
-        <div className={styles.text}>
-          <Link to="/Board">let's go to play！</Link>
-        </div>
+      <div className={styles.text}>
+        <Link to="/Board">let's go to play！</Link>
+      </div>
+      <Web3ReactProvider getLibrary={getLibrary}>
         <p>ChainId: {chainId}</p>
         <p>Account: {account}</p>
         <button type="button" onClick={connect}>Connect</button>
-      </Web3ReactProvider>
-    </div>
-
+      </Web3ReactProvider >
+    </div >
   );
 }
