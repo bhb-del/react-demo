@@ -11,10 +11,13 @@
     "start": "webpack-dev-server --config ./config/dev.config.js --hot --mode development"
   },
   "dependencies": {
+    "@ethersproject/providers": "^5.6.0",
     "@teamsupercell/typings-for-css-modules-loader": "^2.5.1",
     "@types/react-dom": "^17.0.11",
     "@types/react-router-config": "^5.0.6",
     "@types/react-router-dom": "^5.3.3",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
     "classnames": "^2.3.1",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.6.0",
