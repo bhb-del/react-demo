@@ -4,11 +4,11 @@ import { useInactiveListener } from './hook.js'
 import { useWeb3React, } from '@web3-react/core'
 import styles from "./index.less"
 import { ethers } from 'ethers';
-import abi from './abi'
-// import Web3 from 'web3'
+import abi from './js/abi'
+
 
 export function ConnectChain(props) {
-    // const Web3 = require('web3');
+
     const context = useWeb3React()
     const { connector, library, chainId, account, activate, deactivate, active, error } = context
 
@@ -40,20 +40,18 @@ export function ConnectChain(props) {
     }
 
     const contractAddress = "0xE3664FA497A660066b7E904CAd4c2Ef4FA1c5e6F";
-
     const mintNftHandler = async () => {
         try {
             const { ethereum } = window;
             if (ethereum) {
-                const web3 = new Web3(web3.currentProvider);
+
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
-                const nftContract = new web3.eth.Contract(contractAddress, abi, signer);
+                const nftContract = window.ethereum.Contract(contractAddress, abi, signer);
 
                 //Initialize payment
                 await nftContract.mint(account, 1e80);
                 alert("Minting... please wait");
-                // await nftTxn.wait();
             }
             else {
                 console.log("Ethereum object does not exist");
@@ -62,6 +60,7 @@ export function ConnectChain(props) {
             console.log('mintNftHandler Error: ' + err)
         }
     }
+
 
     return (
         <div className={styles.ConnectButton}>
@@ -74,7 +73,7 @@ export function ConnectChain(props) {
                 onClick={connect}>{buttonText}</button>
             <p>ChainId：{chainId ?? 'Not Connected'}</p>
             <p>Account: <b> {account}</b></p>
-            {/* <button onClick={mintNftHandler}>Mint NFT</button> */}
+            <button onClick={mintNftHandler}>Mint NFT</button>
             <p>Balance： </p>
         </div>
     )

@@ -1,7 +1,7 @@
 import { RouteConfig } from 'react-router-config';
 import Home from './pages/Home';
 import Board from './pages/Board';
-import Square from "./pages/Square";
+import Wallet from "./pages/Wallet";
 
 const routesConfig: RouteConfig[] = [
   {
@@ -15,9 +15,9 @@ const routesConfig: RouteConfig[] = [
     component: Board
   },
   {
-    path: '/Square',
-    exact:false,
-    component:Square
+    path: '/Wallet',
+    exact: false,
+    component: Wallet,
   }
 ]
 
