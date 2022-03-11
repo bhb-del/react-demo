@@ -85,6 +85,15 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.tsx', ".js", ".json", ".jsx", ".css"],
+    fallback: {
+      "crypto": require.resolve("crypto-browserify"),
+      "stream": require.resolve("stream-browserify"),
+      // "url": require.resolve("url/"),
+      "https": require.resolve("https-browserify"),
+      "http": require.resolve("stream-http"),
+      "os": require.resolve("os-browserify"),
+      "url": false,
+    }
   },
   devtool: 'source-map',
   context: path.join(__dirname, '../'),
