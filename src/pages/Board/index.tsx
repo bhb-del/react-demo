@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styles from './index.less';
 import Square from "../Square/index";
 import { RouteComponentProps } from "react-router-dom";
-
+import PubSub from "../PubSub";
+import Wallet from "../Wallet";
 
 export default (props: RouteComponentProps) => {
   const arr: string[] = new Array(9).fill(null);
@@ -28,15 +29,14 @@ export default (props: RouteComponentProps) => {
     squares[i] = xIsNext ? 'X' : 'O';
     setState(squares);
     setxIsNext(!xIsNext);
-    console.log(xIsNext);
   }
 
   const winner = calculateWinner(state);
   let status;
   if (winner) {
-    status = 'Winner：' + winner;
+    status = 'You win！'
   } else {
-    status = 'Next player：' + (xIsNext ? 'X' : 'O');
+    status = 'Next piece：' + (xIsNext ? 'X' : 'O');
   }
 
   //calculateWinner function
@@ -61,22 +61,32 @@ export default (props: RouteComponentProps) => {
   }
   return (
     <div className={`${styles.kuan} ${styles.pinkBack}`}>
-      <div className={styles.status}>{status}</div>
-      <div className={styles.boardRow}>
+      <div className={styles.BoardContent}>
+        <div className={styles.status}>{status}</div>
+        <div className={styles.content}>
+          <div className={styles.boardRow}>
 
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
+            {renderSquare(0)}
+            {renderSquare(1)}
+            {renderSquare(2)}
+          </div>
+          <div className={styles.boardRow}>
+            {renderSquare(3)}
+            {renderSquare(4)}
+            {renderSquare(5)}
+          </div>
+          <div className={styles.boardRow}>
+            {renderSquare(6)}
+            {renderSquare(7)}
+            {renderSquare(8)}
+          </div>
+        </div>
       </div>
-      <div className={styles.boardRow}>
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
+      <div>
+        <PubSub />
       </div>
-      <div className={styles.boardRow}>
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
+      <div>
+        <Wallet />
       </div>
     </div>
   )

@@ -3,16 +3,18 @@ import { ethers } from 'ethers';
 import abi from '../js/abi.js'
 import { useWeb3React } from "@web3-react/core";
 
+declare interface window {
+    ethereum: any
+}
 
-export default () => {
+export default (window) => {
     const context = useWeb3React()
     const { account } = context
     const contractAddress = "0xF91995dDb1FA78C0727C994f28e5befD70528C34";
-
+    const provider = new ethers.providers.Web3Provider(window.ethereum)
 
     const mintNftHandler = async () => {
         try {
-            const provider = new ethers.providers.Web3Provider(window.ethereum)
             await provider.send("eth_requestAccounts", []);
             const signer = provider.getSigner();
             //creact contract object
@@ -30,7 +32,6 @@ export default () => {
 
     return (
         <div>
-            <p>Balance： </p>
             <button onClick={mintNftHandler}>Mint</button>
         </div>
     )

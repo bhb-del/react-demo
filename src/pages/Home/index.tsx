@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { Web3ReactProvider, useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
 import { InjectedConnector } from "@web3-react/injected-connector";
-import Web3 from "web3";
+// import Web3 from "web3";
 import abi from "../Wallet/js/abi.js"
 // import { library } from "webpack";
 
@@ -16,7 +16,11 @@ function getLibrary(provider: any): Web3Provider {
 
 
 export default () => {
-
+  // useEffect(() => {
+  //   window.process = {
+  //     ...window.process,
+  //   };
+  // }, []);
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
       <App />
@@ -35,11 +39,11 @@ const App = () => {
   }
 
   const contractAddress = "0xF91995dDb1FA78C0727C994f28e5befD70528C34";
-  async function Mint(account, val) {
-    let web3 = new Web3(window.web3.currentProvider);
-    let contract = new web3.eth.Contract(abi, contractAddress)
-    contract.methods.mint(account, val);
-  }
+  // async function Mint(account, val) {
+  //   let web3 = new Web3(Web3.givenProvider);
+  //   let contract = new web3.eth.Contract(abi, contractAddress)
+  //   contract.methods.mint(account, val);
+  // }
 
 
   return (
@@ -50,7 +54,11 @@ const App = () => {
       <p>ChainId: {chainId}</p>
       <p>Account: {account}</p>
       <button type="button" onClick={connect}>Connect</button>
-      <button type="button" onClick={() => { Mint(account, "1000000000000000000") }}>Mint</button>
+      {/* <button type="button" onClick={() => { Mint(account, "1000000000000000000") }}>Mint</button> */}
     </div >
   )
+}
+
+function useEffect(arg0: () => void, arg1: undefined[]) {
+  throw new Error("Function not implemented.");
 }

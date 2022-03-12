@@ -1,0 +1,30 @@
+.pubsub {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 500px;
+  height: auto;
+}
+.pubsub b {
+  text-align: left;
+  vertical-align: top;
+}
+.pubsub h2 {
+  text-align: center;
+}
+.pubsub input {
+  margin-bottom: 30px;
+}
+.pubsub form,
+.pubsub .ShowComments {
+  border: 1px solid black;
+  padding: 20px;
+}
+.pubsub .ShowComments {
+  border-top: 0px;
+}
+.pubsub button {
+  margin-left: 10px;
+}
+span {
+  line-height: 30px;
+}

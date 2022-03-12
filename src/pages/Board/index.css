@@ -9,14 +9,22 @@
 .pinkBack {
   margin: 0 auto;
   height: auto;
-  background: pink;
 }
 .kuan {
-  width: 200px;
+  margin-top: 100px;
 }
 .status {
   margin-bottom: 10px;
 }
 .blueBack {
   background: skyblue;
+}
+.BoardContent {
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.BoardContent .content {
+  width: 100px;
+  margin: 0 auto;
 }
