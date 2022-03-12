@@ -2,12 +2,8 @@ import React from 'react'
 import { ethers } from 'ethers'
 import abi from '../js/abi.js'
 
-declare interface window {
-    ethereum: any
-}
 
-
-export default (window) => {
+export default () => {
     const contractAddress = "0xF91995dDb1FA78C0727C994f28e5befD70528C34";
     const account = '0x78eDD742a637d2135611240d551A7D81cf5101E1'
     const reward = async () => {

@@ -5,14 +5,12 @@ import { useInactiveListener } from '../js/hook.js'
 import { useWeb3React, } from '@web3-react/core'
 import { ethers } from 'ethers';
 
-declare interface window {
-    ethereum: any
-}
+
 interface IProps {
     triedEager: any
 }
 
-export default ({ triedEager }: IProps, window) => {
+export default ({ triedEager }: IProps) => {
 
     const context = useWeb3React()
     const { connector, chainId, account, activate, deactivate, error } = context

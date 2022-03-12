@@ -3,11 +3,8 @@ import { ethers } from 'ethers';
 import abi from '../js/abi.js'
 import { useWeb3React } from "@web3-react/core";
 
-declare interface window {
-    ethereum: any
-}
 
-export default (window) => {
+export default () => {
     const context = useWeb3React()
     const { account } = context
     const contractAddress = "0xF91995dDb1FA78C0727C994f28e5befD70528C34";

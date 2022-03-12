@@ -4,6 +4,7 @@ import Square from "../Square/index";
 import { RouteComponentProps } from "react-router-dom";
 import PubSub from "../PubSub";
 import Wallet from "../Wallet";
+import InterFace from "../InterFace";
 
 export default (props: RouteComponentProps) => {
   const arr: string[] = new Array(9).fill(null);
@@ -87,6 +88,9 @@ export default (props: RouteComponentProps) => {
       </div>
       <div>
         <Wallet />
+      </div>
+      <div>
+        <InterFace />
       </div>
     </div>
   )
