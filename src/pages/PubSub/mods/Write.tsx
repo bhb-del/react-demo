@@ -1,35 +1,22 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import PubSub from 'pubsub-js'
 
 
 
 export default () => {
-    const [content, setContent] = useState('');
-    const [nickName, setNickName] = useState('');
-
-    function handleContent(e) {
-        //show content in textarea
-        const { name, value } = e.target;
-        if (name === 'nickName') {
-            setNickName(value.trim());
-        }
-        else if (name === 'content') {
-            setContent(value.trim());
-        }
-
-    }
-
+    const currentName = useRef(null);
+    const currentContent = useRef(null);
     function addComment() {
         const commentInfo = {
-            nickName: nickName,
-            content: content,
+            nickName: currentName.current.value.trim(),
+            content: currentContent.current.value.trim(),
         }
-        if (commentInfo.nickName === "" || commentInfo.content === "") {
+        if (commentInfo.content === "" || commentInfo.nickName === "") {
             alert('please input something')
         } else {
             PubSub.publish('msg', commentInfo)
-            setContent('')
-            setNickName('')
+            currentName.current.value = ''
+            currentContent.current.value = ''
         }
     }
 
@@ -37,10 +24,10 @@ export default () => {
         <div>
             <form>
                 <b>your name：</b>
-                <input type="text" value={nickName} onChange={e => handleContent(e)} name="nickName" />
+                <input type="text" ref={currentName} name="nickName" />
                 <br />
                 <b>Comments: </b>
-                <textarea rows={4} cols={30} value={content} onChange={e => handleContent(e)} name="content"></textarea>
+                <textarea rows={4} cols={30} ref={currentContent} name="content"></textarea>
                 <button type="button" onClick={addComment}>Submit</button>
             </form>
         </div>
